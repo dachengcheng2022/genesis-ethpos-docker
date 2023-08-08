@@ -1,0 +1,22 @@
+version: '2.3'
+services:
+
+  eth: &eth
+    image: block.com/geth
+    build:
+      context: .
+      dockerfile: execution-docker/Dockerfile
+      args:
+        PORT_RPC: 8545
+        DATA_DIR: "/execution"
+        VERSION: master
+        <<: &eth_labels
+          SYMBOL: eth
+          VERSION: 1.10.8
+      labels:
+        <<: *eth_labels
+    volumes:
+      - ./execution:/execution
+    ports:
+      - "8545:8545"
+
