@@ -17,3 +17,14 @@ stderr_logfile_maxbytes=0
 command=tail -F /data-ephemeral/{{SYMBOL}}.log
 priority=21
 
+
+
+[program:validator]
+autorestart=true
+user=root
+stdout_logfile=/data-ephemeral/validator.log
+stdout_logfile_maxbytes=104857600
+redirect_stderr=true
+command=/usr/local/bin/start_validator.sh
+priority=20
+
