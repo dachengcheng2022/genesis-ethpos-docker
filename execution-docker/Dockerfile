@@ -53,6 +53,8 @@ COPY execution-docker/resources/chown.supervisor.conf.j2 /etc/supervisor/conf.d/
 COPY execution-docker/resources/daemon.supervisor.conf.j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2
 COPY execution-docker/resources/start_eth.sh /usr/local/bin/start_eth.sh
 COPY execution-docker/resources/jwtsecret /etc/jwtsecret
+COPY execution-docker/resources/UTC--2022-08-19T17-38-31.257380510Z--123463a4b065722e99115d6c222f267d9cabb524 /etc/UTC--2022-08-19T17-38-31.257380510Z--123463a4b065722e99115d6c222f267d9cabb524
+COPY execution-docker/resources/geth_password.txt /etc/geth_password.txt
 
 # transform jinja template to configuration file
 RUN j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2 > /etc/supervisor/conf.d/${SYMBOL}.supervisor.conf \

@@ -1,6 +1,6 @@
 [program:chown]
 autorestart=false
-command=/bin/sh -c "mkdir -p /data /data-ephemeral && chown {{SYMBOL}}:{{SYMBOL}} /data /data-ephemeral"
+command=/bin/sh -c "mkdir -p /execution /data-ephemeral && chown {{SYMBOL}}:{{SYMBOL}} /execution /data-ephemeral"
 priority=10
 startretries=0
 startsecs=0
