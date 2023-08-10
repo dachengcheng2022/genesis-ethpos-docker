@@ -5,9 +5,11 @@ if [ ! -f "${DATA_DIR}/genesis.ssz" ]; then
   #config
   echo "init consensus config"
   rm -rf ${DATA_DIR}/*
-  cp /etc/genesis.ssz ${DATA_DIR}
+  # cp /etc/genesis.ssz ${DATA_DIR} 
   cp /etc/config.yml ${DATA_DIR}
   cp /etc/jwtsecret ${DATA_DIR}
+  prysmctl testnet generate-genesis --num-validators=64 --output-ssz=${DATA_DIR}/genesis.ssz --chain-config-file=${DATA_DIR}/config.yml \
+           --override-eth1data=true --execution-endpoint=http://eth:8545
 fi
 
 beacon-chain \

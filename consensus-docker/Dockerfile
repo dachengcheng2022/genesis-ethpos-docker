@@ -55,7 +55,6 @@ RUN mkdir -p "/home/${SYMBOL}" \
 
 
 # copy static node info
-COPY consensus-docker/resources/genesis.ssz /etc/genesis.ssz
 COPY consensus-docker/resources/config.yml /etc/config.yml
 
 COPY consensus-docker/resources/supervisord.conf /etc/supervisord.conf
@@ -71,6 +70,8 @@ RUN j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2 > /etc/supervisor/conf.d
   && chmod +x /usr/local/bin/start_beacon.sh \
   && chmod +x /usr/local/bin/start_validator.sh \
   && rm -f /etc/supervisor/conf.d/*.j2 /*.j2
+
+RUN echo 'Asia/Shanghai' > /etc/timezone
 
 VOLUME ${DATA_DIR} /data-ephemeral
 

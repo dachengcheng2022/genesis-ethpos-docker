@@ -9,10 +9,9 @@ services:
       args:
         PORT_RPC: 8545
         DATA_DIR: "/execution"
-        VERSION: master
+        VERSION: v1.12.0
         <<: &eth_labels
           SYMBOL: eth
-          VERSION: master
       labels:
         <<: *eth_labels
     volumes:
@@ -41,5 +40,7 @@ services:
       - 3500:3500
       - 8080:8080
       - 13000:13000
-
+    depends_on:
+      eth:
+        condition: service_started
 
