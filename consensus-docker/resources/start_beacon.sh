@@ -5,12 +5,12 @@ if [ ! -f "${DATA_DIR}/genesis.ssz" ]; then
   #config
   echo "init consensus config"
   rm -rf ${DATA_DIR}/*
-  # cp /etc/genesis.ssz ${DATA_DIR} 
   cp /etc/config.yml ${DATA_DIR}
   cp /etc/jwtsecret ${DATA_DIR}
   prysmctl testnet generate-genesis --num-validators=64 --output-ssz=${DATA_DIR}/genesis.ssz --chain-config-file=${DATA_DIR}/config.yml \
-           --override-eth1data=true --execution-endpoint=http://eth:8545
+          --geth-genesis-json-in=/etc/genesis.json --geth-genesis-json-out=/execution/genesis.json
 fi
+
 
 beacon-chain \
   --datadir=${DATA_DIR} \
@@ -20,6 +20,10 @@ beacon-chain \
   --chain-config-file=${DATA_DIR}/config.yml \
   --config-file=${DATA_DIR}/config.yml \
   --chain-id=32382 \
+  --rpc-host=0.0.0.0 \
+  --contract-deployment-block=0 \
+  --grpc-gateway-host=0.0.0.0 \
+  --monitoring-host=0.0.0.0 \
   --execution-endpoint=http://eth:8551 \
   --accept-terms-of-use \
   --jwt-secret=${DATA_DIR}/jwtsecret \

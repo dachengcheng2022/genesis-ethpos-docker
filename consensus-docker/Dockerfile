@@ -58,13 +58,13 @@ RUN git clone --branch ${VERSION} https://github.com/prysmaticlabs/prysm.git \
 
 RUN mkdir -p "/home/${SYMBOL}" \
   && chown -R "${SYMBOL}:${SYMBOL}" "/home/${SYMBOL}" \
-  && mkdir ${DATA_DIR} /data-ephemeral \
-  && chown -R ${SYMBOL}:${SYMBOL} ${DATA_DIR} /data-ephemeral 
+  && mkdir ${DATA_DIR} /data-ephemeral /execution \
+  && chown -R ${SYMBOL}:${SYMBOL} ${DATA_DIR} /data-ephemeral /execution
 
 
 # copy static node info
 COPY consensus-docker/resources/config.yml /etc/config.yml
-
+COPY consensus-docker/resources/genesis.json /etc/genesis.json
 COPY consensus-docker/resources/supervisord.conf /etc/supervisord.conf
 COPY consensus-docker/resources/chown.supervisor.conf.j2 /etc/supervisor/conf.d/chown.supervisor.conf.j2
 COPY consensus-docker/resources/daemon.supervisor.conf.j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2

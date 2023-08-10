@@ -20,6 +20,9 @@ services:
       - 8551:8551
       - 8545:8545
       - 30303:30303
+    depends_on:
+      beacon-chain:
+        condition: service_started
 
   beacon-chain: &beacon-chain
     image: block.com/beacon-chain
@@ -35,12 +38,10 @@ services:
         <<: *beacon_labels
     volumes:
       - ./consensus:/consensus
+      - ./execution:/execution
     ports:
       - 4000:4000
       - 3500:3500
       - 8080:8080
       - 13000:13000
-    depends_on:
-      eth:
-        condition: service_started
 

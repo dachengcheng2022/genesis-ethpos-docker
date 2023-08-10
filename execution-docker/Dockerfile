@@ -55,7 +55,6 @@ RUN mkdir -p "/home/${SYMBOL}" \
   && chown -R ${SYMBOL}:${SYMBOL} ${DATA_DIR} /data-ephemeral 
 
 # copy static node info
-COPY execution-docker/resources/genesis.json /etc/genesis.json
 COPY execution-docker/resources/supervisord.conf /etc/supervisord.conf
 COPY execution-docker/resources/chown.supervisor.conf.j2 /etc/supervisor/conf.d/chown.supervisor.conf.j2
 COPY execution-docker/resources/daemon.supervisor.conf.j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2
