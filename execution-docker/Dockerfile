@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:1.20
 
 ARG DATA_DIR
 ARG VERSION
@@ -9,6 +9,8 @@ ENV PYTHON_PIP_VERSION 21.1.3
 ENV VERSION=${VERSION}
 ENV DATA_DIR ${DATA_DIR}
 ENV SYMBOL=ETH
+ENV TZ=Asia/Shanghai \
+    DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
     wget \
@@ -34,6 +36,12 @@ RUN apt-get update && apt-get install -y \
   && export DEBIAN_FRONTEND=noninteractive \
   && rm -rf /var/lib/apt/lists/* \
   && useradd -Urs /usr/sbin/nologin "${SYMBOL}"
+
+# 修改时区
+RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && echo ${TZ} > /etc/timezone \
+    && dpkg-reconfigure --frontend noninteractive tzdata \
+    && rm -rf /var/lib/apt/lists/*
 
 #instal geth env
 RUN git clone --branch ${VERSION} https://github.com/ethereum/go-ethereum.git \

@@ -11,7 +11,15 @@ ENV PYTHON_PIP_VERSION 21.1.3
 ENV VERSION=${VERSION}
 ENV DATA_DIR ${DATA_DIR}
 ENV SYMBOL=${SYMBOL}
+ENV TZ=Asia/Shanghai \
+    DEBIAN_FRONTEND=noninteractive
 
+# 修改时区
+RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && echo ${TZ} > /etc/timezone \
+    && dpkg-reconfigure --frontend noninteractive tzdata \
+    && rm -rf /var/lib/apt/lists/*
+    
 RUN apt-get update && apt-get install -y \
     wget \
     curl \
