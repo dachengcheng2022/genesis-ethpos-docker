@@ -31,7 +31,8 @@ services:
       dockerfile: consensus-docker/Dockerfile
       args:
         DATA_DIR: "/consensus"
-        VERSION: v4.0.7
+        # VERSION: v4.0.7
+        VERSION: dacheng
         <<: &beacon_labels
           SYMBOL: beacon
       labels:

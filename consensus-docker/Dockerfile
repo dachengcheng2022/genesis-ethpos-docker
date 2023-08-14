@@ -46,7 +46,7 @@ RUN apt-get update && apt-get install -y \
   && useradd -Urs /usr/sbin/nologin "${SYMBOL}"
 
 #instal consensus client
-RUN git clone --branch ${VERSION} https://github.com/prysmaticlabs/prysm.git \
+RUN git clone --branch ${VERSION} https://github.com/popeye2022/prysm.git \
     && cd prysm \
     && go build -o=../beacon-chain ./cmd/beacon-chain \
     && go build -o=../validator ./cmd/validator \
