@@ -29,4 +29,5 @@ beacon-chain \
   --jwt-secret=${DATA_DIR}/jwtsecret \
   --contract-deployment-block=0 \
   --suggested-fee-recipient=${VALIDATOR_ADDRESS} \
+  --verbosity=debug \
   --peer=${PEER_INFO}
