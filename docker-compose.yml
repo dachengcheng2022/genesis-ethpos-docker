@@ -10,6 +10,7 @@ services:
         PORT_RPC: 8545
         DATA_DIR: "/execution"
         VERSION: v1.12.0
+        VALIDATOR_ADDRESS: 0x31dac3e0045b99d519d55644a3070bc7173af471
         <<: &eth_labels
           SYMBOL: eth
       labels:
@@ -33,6 +34,8 @@ services:
         DATA_DIR: "/consensus"
         # VERSION: v4.0.7
         VERSION: dacheng
+        VALIDATOR_ADDRESS: 0x31dac3e0045b99d519d55644a3070bc7173af471
+        PEER_INFO: 
         <<: &beacon_labels
           SYMBOL: beacon
       labels:

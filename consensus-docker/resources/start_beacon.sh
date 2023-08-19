@@ -28,4 +28,5 @@ beacon-chain \
   --accept-terms-of-use \
   --jwt-secret=${DATA_DIR}/jwtsecret \
   --contract-deployment-block=0 \
-  --suggested-fee-recipient=0x123463a4b065722e99115d6c222f267d9cabb524
+  --suggested-fee-recipient=${VALIDATOR_ADDRESS} \
+  --peer=${PEER_INFO}
