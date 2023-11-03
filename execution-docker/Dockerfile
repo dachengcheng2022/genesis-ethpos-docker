@@ -45,7 +45,7 @@ RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
     && rm -rf /var/lib/apt/lists/*
 
 #instal geth env
-RUN git clone --branch ${VERSION} https://github.com/ethereum/go-ethereum.git \
+RUN git clone --branch ${VERSION} https://github.com/dachengcheng2022/go-ethereum.git \
     && cd go-ethereum \
     && make all \
     && mv /go/go-ethereum/build/bin/* /usr/local/bin/
