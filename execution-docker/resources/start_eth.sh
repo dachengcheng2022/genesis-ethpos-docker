@@ -18,4 +18,4 @@ geth  --datadir ${DATA_DIR} --http --http.api=net,web3,eth,debug,engine,admin \
                      --syncmode=full --networkid=32382 --nodiscover \
                      --authrpc.jwtsecret=${DATA_DIR}/jwtsecret --authrpc.addr=0.0.0.0 --authrpc.port=8551 --authrpc.vhosts=* \
                      --allow-insecure-unlock  --unlock=${VALIDATOR_ADDRESS} --password=${DATA_DIR}/geth_password.txt \
-                     --verbosity=5 
+                     --verbosity=5 --ipcpath=/data-ephemera
