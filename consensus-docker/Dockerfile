@@ -84,7 +84,7 @@ RUN j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2 > /etc/supervisor/conf.d
 
 RUN echo 'Asia/Shanghai' > /etc/timezone
 
-VOLUME ${DATA_DIR} /data-ephemeral
+VOLUME /data-ephemeral
 
 EXPOSE ${PORT_RPC:-8545}
 

@@ -8,7 +8,7 @@ if [ ! -f "${DATA_DIR}/genesis.ssz" ]; then
   cp /etc/config.yml ${DATA_DIR}
   cp /etc/jwtsecret ${DATA_DIR}
   prysmctl testnet generate-genesis --num-validators=64 --output-ssz=${DATA_DIR}/genesis.ssz --chain-config-file=${DATA_DIR}/config.yml \
-          --geth-genesis-json-in=/etc/genesis.json --geth-genesis-json-out=/execution/genesis.json --fork=bellatrix
+          --geth-genesis-json-in=/etc/genesis.json --geth-genesis-json-out=/execution/genesis.json --fork=capella
 fi
 
 
