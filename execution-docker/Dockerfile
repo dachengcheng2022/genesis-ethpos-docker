@@ -61,8 +61,9 @@ COPY execution-docker/resources/chown.supervisor.conf.j2 /etc/supervisor/conf.d/
 COPY execution-docker/resources/daemon.supervisor.conf.j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2
 COPY execution-docker/resources/start_eth.sh /usr/local/bin/start_eth.sh
 COPY execution-docker/resources/jwtsecret /etc/jwtsecret
-RUN mkdir ${DATA_DIR}/keystore/
-COPY execution-docker/resources/keystore ${DATA_DIR}/keystore/
+COPY execution-docker/resources/UTC--2022-08-19T17-38-31.257380510Z--123463a4b065722e99115d6c222f267d9cabb524 /etc/UTC--2022-08-19T17-38-31.257380510Z--123463a4b065722e99115d6c222f267d9cabb524
+COPY execution-docker/resources/UTC--2023-08-19T04-56-23.233940000Z--630486d226bd0cc219623c79b54b9f8d01d1b95c /etc/UTC--2023-08-19T04-56-23.233940000Z--630486d226bd0cc219623c79b54b9f8d01d1b95c
+COPY execution-docker/resources/UTC--2023-08-19T06-43-03.349924000Z--31dac3e0045b99d519d55644a3070bc7173af471 /etc/UTC--2023-08-19T06-43-03.349924000Z--31dac3e0045b99d519d55644a3070bc7173af471
 COPY execution-docker/resources/geth_password.txt /etc/geth_password.txt
 
 # transform jinja template to configuration file

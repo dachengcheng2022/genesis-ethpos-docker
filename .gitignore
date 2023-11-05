@@ -2,3 +2,5 @@ consensus/
 execution/
 .idea/
 .vscode
+consensus-data/
+execution-data/
