@@ -5,7 +5,11 @@
 ### 2 create validator keys
 ### 2.1 replace your mnemonic
 ### 2.2 replace your keystore_password
-`` docker-compose run staking-cli --language=English --non_interactive existing-mnemonic --folder /basicconfig --mnemonic="drink grab giant fruit tell night fiction raven nominee swing side gauge soccer ecology caution virtual bomb knee wife flower produce can negative fiction" --keystore_password=12345678 --chain="mainnet" --validator_start_index=0 --num_validators=3 --devnet_chain_setting=/config_deposit.yml ``
+``docker-compose run staking-cli \  
+--language=English --non_interactive existing-mnemonic --folder /basicconfig \  
+--mnemonic="drink grab giant fruit tell night fiction raven nominee swing side gauge soccer ecology caution virtual bomb knee wife flower produce can negative fiction" \  
+--keystore_password=12345678 --chain="mainnet" --validator_start_index=0 --num_validators=3 \  
+--devnet_chain_setting=/config_deposit.yml ``  
 it will create key'json on the 'basicconfig' directory
 
 ### 3 beacon init
@@ -16,7 +20,8 @@ it will create genesis.json, geneisi.szz in the ./basciconfig
 ### 4 validator init 
 ``docker-compose run beaconbase validator_init.sh``
 
-
+### 4 geth init 
+``docker-compose run gethbase validator_init.sh``
 
 
 

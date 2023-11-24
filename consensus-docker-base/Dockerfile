@@ -2,7 +2,7 @@ FROM golang:1.20
 ARG VERSION
 ARG SYMBOL
 ARG SOURCE_CODE
-ARG DATA_DIR
+ARG CONFIG_BASE_DIR
 
 ENV APP_ENV=local
 ENV VERSION=${VERSION}
@@ -10,7 +10,7 @@ ENV SYMBOL=${SYMBOL}
 ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive
 ENV PEER_INFO=${PEER_INFO}
-ENV DATA_DIR=${DATA_DIR}
+ENV CONFIG_BASE_DIR=${CONFIG_BASE_DIR}
 # 修改时区
 RUN ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone \
@@ -64,8 +64,8 @@ COPY consensus-docker-base/resources/wallet_password /wallet_password
 
 RUN mkdir -p "/home/${SYMBOL}" \
   && chown -R "${SYMBOL}:${SYMBOL}" "/home/${SYMBOL}" \
-  && mkdir ${DATA_DIR} \
-  && chown -R ${SYMBOL}:${SYMBOL} ${DATA_DIR} \
+  && mkdir ${CONFIG_BASE_DIR} \
+  && chown -R ${SYMBOL}:${SYMBOL} ${CONFIG_BASE_DIR} \
   && chmod 750 /usr/local/bin/beacon_init.sh /usr/local/bin/validator_init.sh
 
 ENTRYPOINT [ "/bin/bash","-c"]

@@ -20,12 +20,14 @@ services:
       context: .
       dockerfile: execution-docker-base/Dockerfile
       args:
-        PORT_RPC: 8545
+        CONFIG_BASE_DIR: "/basicconfig"
         DATA_DIR: "/execution"
         SOURCE_CODE: "https://github.com/dachengcheng2022/go-ethereum.git"
         VERSION: v1.13.4
         SYMBOL: ETH
-
+    volumes:
+      - ./basicconfig:/basicconfig 
+      - ./execution:/execution
 
   beaconbase: &beaconbase
     image: block.com/beaconbase
@@ -33,7 +35,7 @@ services:
       context: .
       dockerfile: consensus-docker-base/Dockerfile
       args:
-        DATA_DIR: "/basicconfig"
+        CONFIG_BASE_DIR: "/basicconfig"
         VERSION: release-v4.1.1
         SOURCE_CODE: "https://github.com/dachengcheng2022/prysm.git"
         SYMBOL: BEACON

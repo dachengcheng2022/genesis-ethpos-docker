@@ -3,6 +3,8 @@ FROM golang:1.20
 ARG VERSION
 ARG SYMBOL
 ARG SOURCE_CODE
+ARG CONFIG_BASE_DIR
+ARG DATA_DIR
 
 ENV APP_ENV=local
 ENV PYTHON_PIP_VERSION 21.1.3
@@ -10,6 +12,8 @@ ENV VERSION=${VERSION}
 ENV SYMBOL=${SYMBOL}
 ENV TZ=Asia/Shanghai \
     DEBIAN_FRONTEND=noninteractive
+ENV CONFIG_BASE_DIR=${CONFIG_BASE_DIR}
+ENV DATA_DIR=${DATA_DIR}
 
 RUN apt-get update && apt-get install -y \
     wget \
@@ -48,9 +52,16 @@ RUN git clone --branch ${VERSION} ${SOURCE_CODE} \
     && make all \
     && mv /go/go-ethereum/build/bin/* /usr/local/bin/
 
+COPY execution-docker-base/resources/eth_init.sh /usr/local/bin/
+
 RUN mkdir -p "/home/${SYMBOL}" \
   && chown -R "${SYMBOL}:${SYMBOL}" "/home/${SYMBOL}" \
-  && mkdir  /data-ephemeral \
-  && chown -R ${SYMBOL}:${SYMBOL} /data-ephemeral 
+  && mkdir  ${CONFIG_BASE_DIR} ${DATA_DIR}\
+  && chown -R ${SYMBOL}:${SYMBOL} ${CONFIG_BASE_DIR} ${DATA_DIR} \
+  && chmod 750 /usr/local/bin/eth_init.sh
 
 RUN echo 'Asia/Shanghai' > /etc/timezone
+
+# ENTRYPOINT [ "/bin/bash","-c"]
+
+CMD [ $CLI_COMMAND ]
