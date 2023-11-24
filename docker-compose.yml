@@ -49,23 +49,19 @@ services:
       dockerfile: execution-docker/Dockerfile
       args:
         PORT_RPC: 8545
-        DATA_DIR: "/execution"
-        VERSION: v1.13.4
-        VALIDATOR_ADDRESS: 31dac3e0045b99d519d55644a3070bc7173af471
-        <<: &eth_labels
-          SYMBOL: eth
-      labels:
-        <<: *eth_labels
+        EXTIP: "190.92.198.117"
     volumes:
       - ./execution:/execution
       - ./execution-data:/data-ephemeral
+      - ./basicconfig:/basicconfig
+
     ports:
       - 8551:8551
       - 8545:8545
       - 30303:30303
-    depends_on:
-      beacon-chain:
-        condition: service_started
+    # depends_on:
+    #   beacon-chain:
+    #     condition: service_started
 
   beacon-chain: &beacon-chain
     image: block.com/beacon-chain
