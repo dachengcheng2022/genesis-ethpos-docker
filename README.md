@@ -22,15 +22,21 @@ existing-mnemonic \
 ```
 
 ### 3 beacon init
-``docker-compose run beaconbase beacon_init.sh``
+```shell
+docker-compose run beaconbase beacon_init.sh
+```
 
 it will create genesis.json, geneisi.szz in the ./basciconfig
 
 ### 4 validator init 
-``docker-compose run beaconbase validator_init.sh``
+```shell
+docker-compose run beaconbase validator_init.sh
+```
 
-### 4 geth init 
-``docker-compose run gethbase validator_init.sh``
+### 5 geth init 
+```shell
+docker-compose run gethbase validator_init.sh
+```
 
 
 
