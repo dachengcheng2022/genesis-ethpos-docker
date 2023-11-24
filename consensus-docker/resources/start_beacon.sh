@@ -9,7 +9,7 @@ beacon-chain \
   --genesis-state=${CONFIG_BASE_DIR}/genesis.ssz \
   --bootstrap-node= \
   --chain-config-file=/config.yml \
-  --config-file=config.yml \
+  --config-file=/config.yml \
   --chain-id=97823 \
   --rpc-host=0.0.0.0 \
   --contract-deployment-block=0 \
@@ -17,10 +17,12 @@ beacon-chain \
   --monitoring-host=0.0.0.0 \
   --execution-endpoint=http://eth:8551 \
   --accept-terms-of-use \
-  --jwt-secret=${DATA_DIR}/jwtsecret \
+  --jwt-secret=${CONFIG_BASE_DIR}/jwtsecret \
   --contract-deployment-block=0 \
-  --suggested-fee-recipient=${VALIDATOR_ADDRESS} \
   --verbosity=debug \
+  --p2p-local-ip=127.0.0.1 \
+  --p2p-host-ip=${HOST_IP} \
+  --p2p-static-id  \
   --peer=${PEER_INFO}
 
 echo "beacon starting endding "

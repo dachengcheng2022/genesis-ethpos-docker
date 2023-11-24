@@ -38,5 +38,5 @@ docker-compose run beaconbase validator_init.sh
 docker-compose run gethbase validator_init.sh
 ```
 
-
+### modify deposit contrcat address
 
