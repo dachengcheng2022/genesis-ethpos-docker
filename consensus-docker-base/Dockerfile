@@ -54,11 +54,20 @@ RUN git clone --branch ${VERSION} ${SOURCE_CODE} \
     && mv /go/validator /usr/local/bin/
 
 
+COPY consensus-docker-base/resources/config.yml /config.yml
+COPY consensus-docker-base/resources/genesis.json /genesis.json
+COPY consensus-docker-base/resources/beacon_init.sh /usr/local/bin/
+COPY consensus-docker-base/resources/validator_init.sh /usr/local/bin/
+COPY consensus-docker-base/resources/account_password /account_password
+COPY consensus-docker-base/resources/wallet_password /wallet_password
+
+
 RUN mkdir -p "/home/${SYMBOL}" \
   && chown -R "${SYMBOL}:${SYMBOL}" "/home/${SYMBOL}" \
-  && mkdir ${DATA_DIR} /data-ephemeral /execution \
-  && chown -R ${SYMBOL}:${SYMBOL} ${DATA_DIR} /data-ephemeral /execution
+  && mkdir ${DATA_DIR} \
+  && chown -R ${SYMBOL}:${SYMBOL} ${DATA_DIR} \
+  && chmod 750 /usr/local/bin/beacon_init.sh /usr/local/bin/validator_init.sh
 
+ENTRYPOINT [ "/bin/bash","-c"]
 
-RUN echo 'Asia/Shanghai' > /etc/timezone
-
+CMD [ $CLI_COMMAND ]

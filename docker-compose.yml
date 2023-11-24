@@ -33,11 +33,12 @@ services:
       context: .
       dockerfile: consensus-docker-base/Dockerfile
       args:
-        DATA_DIR: "/consensus"
+        DATA_DIR: "/basicconfig"
         VERSION: release-v4.1.1
         SOURCE_CODE: "https://github.com/dachengcheng2022/prysm.git"
-        PEER_INFO: 
         SYMBOL: BEACON
+    volumes:
+      - ./basicconfig:/basicconfig
 
   eth: &eth
     image: block.com/geth
