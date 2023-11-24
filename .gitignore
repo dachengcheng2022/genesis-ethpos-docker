@@ -4,3 +4,4 @@ execution/
 .vscode
 consensus-data/
 execution-data/
+basicconfig/
