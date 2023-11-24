@@ -15,7 +15,6 @@ COPY execution-docker/resources/chown.supervisor.conf.j2 /etc/supervisor/conf.d/
 COPY execution-docker/resources/daemon.supervisor.conf.j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2
 COPY execution-docker/resources/start_eth.sh /usr/local/bin/start_eth.sh
 COPY execution-docker/resources/jwtsecret /etc/jwtsecret
-COPY execution-docker/resources/geth_password.txt /etc/geth_password.txt
 
 # transform jinja template to configuration file
 RUN j2 /etc/supervisor/conf.d/daemon.supervisor.conf.j2 > /etc/supervisor/conf.d/${SYMBOL}.supervisor.conf \
