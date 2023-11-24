@@ -21,7 +21,7 @@ it will create genesis.json, geneisi.szz in the ./basciconfig
 ``docker-compose run beaconbase validator_init.sh``
 
 ### 4 geth init 
-``docker-compose run gethbase validator_init.sh``
+``docker-compose run ethbase eth_init.sh``
 
 
 
