@@ -1,6 +1,47 @@
 version: '2.3'
 services:
 
+  staking-cli: &stakingcli
+    image: block.com/staking-cli
+    build:
+      context: .
+      dockerfile: staking-cli-docker/Dockerfile
+      args:
+        DATA_DIR: "/basicconfig"
+        VERSION: master
+        SOURCE_CODE: "https://github.com/dachengcheng2022/staking-deposit-cli.git"
+        SYMBOL: CLI
+    volumes:
+      - ./basicconfig:/basicconfig
+
+  ethbase: &ethbase
+    image: block.com/gethbase
+    build:
+      context: .
+      dockerfile: execution-docker-base/Dockerfile
+      args:
+        CONFIG_BASE_DIR: "/basicconfig"
+        DATA_DIR: "/execution"
+        SOURCE_CODE: "https://github.com/dachengcheng2022/go-ethereum.git"
+        VERSION: v1.13.4
+        SYMBOL: ETH
+    volumes:
+      - ./basicconfig:/basicconfig 
+      - ./execution:/execution
+
+  beaconbase: &beaconbase
+    image: block.com/beaconbase
+    build:
+      context: .
+      dockerfile: consensus-docker-base/Dockerfile
+      args:
+        CONFIG_BASE_DIR: "/basicconfig"
+        VERSION: release-v4.1.1
+        SOURCE_CODE: "https://github.com/dachengcheng2022/prysm.git"
+        SYMBOL: BEACON
+    volumes:
+      - ./basicconfig:/basicconfig
+
   eth: &eth
     image: block.com/geth
     build:
@@ -8,23 +49,19 @@ services:
       dockerfile: execution-docker/Dockerfile
       args:
         PORT_RPC: 8545
-        DATA_DIR: "/execution"
-        VERSION: v1.13.4
-        VALIDATOR_ADDRESS: 31dac3e0045b99d519d55644a3070bc7173af471
-        <<: &eth_labels
-          SYMBOL: eth
-      labels:
-        <<: *eth_labels
+        EXTIP: "190.92.198.117"
     volumes:
       - ./execution:/execution
       - ./execution-data:/data-ephemeral
+      - ./basicconfig:/basicconfig
+
     ports:
       - 8551:8551
       - 8545:8545
       - 30303:30303
-    depends_on:
-      beacon-chain:
-        condition: service_started
+    # depends_on:
+    #   beacon-chain:
+    #     condition: service_started
 
   beacon-chain: &beacon-chain
     image: block.com/beacon-chain
