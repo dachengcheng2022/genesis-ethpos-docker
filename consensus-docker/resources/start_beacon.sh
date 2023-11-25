@@ -20,7 +20,7 @@ beacon-chain \
   --jwt-secret=${CONFIG_BASE_DIR}/jwtsecret \
   --contract-deployment-block=0 \
   --verbosity=debug \
-  --p2p-local-ip=127.0.0.1 \
+  --p2p-local-ip=0.0.0.0 \
   --p2p-host-ip=${HOST_IP} \
   --p2p-static-id  \
   --peer=${PEER_INFO}
