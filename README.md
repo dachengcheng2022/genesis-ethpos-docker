@@ -1,5 +1,5 @@
 ### 1 docker build 
-1.1 before build need modify /consensus-docker-base directory account_password and wallet_password's password. it the same as 2.2 keystore_password params
+###### 1.1 before build need modify /consensus-docker-base directory account_password and wallet_password's password. it the same as 2.2 keystore_password params
 ```shell
 docker-compose build
 ```
@@ -35,7 +35,7 @@ docker-compose run beaconbase validator_init.sh
 
 ### 5 geth init 
 ```shell
-docker-compose run ethbase validator_init.sh
+docker-compose run ethbase eth_init.sh
 ```
 
 ### 6 run geth 
