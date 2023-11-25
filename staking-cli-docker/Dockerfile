@@ -26,7 +26,7 @@ COPY staking-cli-docker/resources/config_deposit.yml /
 #instal staking cli
 RUN git clone --branch ${VERSION} ${SOURCE_CODE} \
     && cd staking-deposit-cli \
-    # && pip3 install pyyaml \
+    && pip3 install pyyaml \
     && pip3 install -r requirements.txt \
     && python3 setup.py install 
 
