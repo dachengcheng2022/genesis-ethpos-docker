@@ -7,6 +7,7 @@ docker-compose build
 ### 2 create validator keys
 ###### 2.1 replace your mnemonic
 ###### 2.2 replace your keystore_password
+###### 2.3 replace your execution_address is withdraw address
 ```shell
 docker-compose run staking-cli \
 --language=English \
@@ -18,6 +19,7 @@ existing-mnemonic \
 --chain="mainnet" \
 --validator_start_index=0 \
 --num_validators=3 \
+--execution_address=0xCBf79Ae1b1b58Eb6b84Ad159588d35A71dE49b6c \
 --devnet_chain_setting=/config_deposit.yml
 ```
 
