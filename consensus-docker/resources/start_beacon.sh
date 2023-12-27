@@ -26,7 +26,7 @@ beacon-chain \
   --peer=${PEER_INFO} \
   --no-discover \
   --pprof \
-  --pprofaddr=0.0.0.0 \
+  --pprofaddr=0.0.0.0
 
 echo "beacon starting endding "
 
