@@ -7,7 +7,6 @@ beacon-chain \
   --datadir=${DATA_DIR} \
   --min-sync-peers=0 \
   --genesis-state=${CONFIG_BASE_DIR}/genesis.ssz \
-  --bootstrap-node= \
   --chain-config-file=/config.yml \
   --config-file=/config.yml \
   --chain-id=97823 \
@@ -24,7 +23,6 @@ beacon-chain \
   --p2p-host-ip=${HOST_IP} \
   --p2p-static-id  \
   --peer=${PEER_INFO} \
-  --no-discovery \
   --pprof \
   --pprofaddr=0.0.0.0
 
