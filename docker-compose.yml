@@ -48,7 +48,7 @@ services:
       dockerfile: execution-docker/Dockerfile
       args:
         PORT_RPC: 8545
-        EXTIP: "190.92.198.117"
+        EXTIP: "172.31.21.169"
     volumes:
       - ./execution:/execution
       - ./execution-data:/data-ephemeral
