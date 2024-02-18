@@ -48,7 +48,7 @@ services:
       dockerfile: execution-docker/Dockerfile
       args:
         PORT_RPC: 8545
-        EXTIP: "190.92.198.117"
+        EXTIP: "172.31.21.169"
     volumes:
       - ./execution:/execution
       - ./execution-data:/data-ephemeral
@@ -67,7 +67,7 @@ services:
       args:
         DATA_DIR: "/consensus"
         PEER_INFO: 
-        HOST_IP: 52.221.207.137
+        HOST_IP: 172.31.21.169
         FEE_RECIPIENT: "0x161783e9f3d16d0d5a8e5027805c7a54dfe61e03"
     volumes:
       - ./consensus:/consensus
