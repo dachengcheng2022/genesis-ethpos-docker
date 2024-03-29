@@ -19,8 +19,9 @@ existing-mnemonic \
 --chain="mainnet" \
 --validator_start_index=0 \
 --num_validators=3 \
---execution_address=0x161783e9f3d16d0d5a8e5027805c7a54dfe61e03 \
+--execution_address=0x161783E9f3d16d0d5a8E5027805c7A54dFE61e03 \
 --devnet_chain_setting=/config_deposit.yml
+
 ```
 
 ### 3 beacon init
