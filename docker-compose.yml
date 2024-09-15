@@ -58,6 +58,8 @@ services:
       - 8551:8551
       - 8545:8545
       - 30303:30303
+    depends_on:
+      - ethbase
 
   beacon: &beacon-chain
     image: block.com/beacon-chain
@@ -80,4 +82,6 @@ services:
       - 13000:13000
       - 6060:6060
       - 7070:7070
+    depends_on:
+      - beaconbase
 
