@@ -22,7 +22,9 @@ existing-mnemonic \
 --execution_address=0x161783e9f3d16d0d5a8e5027805c7a54dfe61e03 \
 --devnet_chain_setting=/config_deposit.yml
 ```
-
+```shell powershell
+docker-compose run staking-cli --language=English --non_interactive existing-mnemonic --folder /basicconfig --mnemonic="crash dog curtain surface river current wood describe secret fan wear castle sea noble welcome seat antenna wear tray point media ocean destroy mom" --keystore_password=12345678 --chain="mainnet" --validator_start_index=0 --num_validators=3 --execution_address=0xCBf79Ae1b1b58Eb6b84Ad159588d35A71dE49b6c --devnet_chain_setting=/config_deposit.yml
+````
 ### 3 beacon init
 ```shell
 docker-compose run beaconbase beacon_init.sh

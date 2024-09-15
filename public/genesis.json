@@ -40,6 +40,9 @@
 		"ff66feaced2977141ed8d58e53b96d2c31e19f82": {
 			"code": "0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf3",
 			"balance": "0x0"
+		},
+		"0x943fa1e47df2759244a85cdb49370f5f5812d74d":{
+			"balance": "0x52b7d2dcc80cd400000000"
 		}
 	},
 	"number": "0x0",
