@@ -60,6 +60,11 @@ docker-compose up -d eth
 docker-compose up -d beacon
 ```
 
+## 8 push genesis
+cp basicconfig/genesis.ssz public/
+cp basicconfig/genesis.json public/
+git commit -m "update genesis"  public/genesis.json  public/genesis.ssz
+git push --force
 
 ### modify deposit contrcat address
 
