@@ -22,7 +22,7 @@ docker-compose run staking-cli \
 --non_interactive \
 existing-mnemonic \
 --folder /basicconfig \
---mnemonic="drink grab giant fruit tell night fiction raven nominee swing side gauge soccer ecology caution virtual bomb knee wife flower produce can negative fiction" \
+--mnemonic="floor cruel thank hill unfold spray wagon fold aspect confirm match concert upon clown slice twenty water super nominee book entire border detect meat“ \
 --keystore_password=12345678 \
 --chain="mainnet" \
 --validator_start_index=0 \
